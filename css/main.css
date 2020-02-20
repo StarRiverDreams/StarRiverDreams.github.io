@@ -96,15 +96,12 @@
   box-sizing: border-box; }
 
 body {
+  background: #303952;
   color: #fff;
   height: 100%;
   margin: 0;
   font-family: 'Montserrat',Arial, Helvetica, sans-serif;
   line-height: 1.5; }
-  body#bg-img {
-    background: url("../img/bg1.webp");
-    background-attachment: fixed;
-    background-size: cover; }
   body::after {
     content: '';
     display: block;
@@ -119,6 +116,16 @@ body {
     height: 100%;
     z-index: -1;
     background: rgba(48, 57, 82, 0.6); }
+  body #bg-img1 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: url("../img/bg1.webp");
+    background-attachment: fixed;
+    background-size: cover;
+    z-index: -2; }
 
 h1,
 h2,
