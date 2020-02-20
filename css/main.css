@@ -55,7 +55,7 @@
     .menu-branding .portrait {
       width: 250px;
       height: 250px;
-      background: url("../img/portrait_small.webp");
+      background: url("../img/portrait_small.png");
       background-size: 250px 250px;
       border-radius: 50%;
       border: solid 3px #f5cd79; }
@@ -103,7 +103,7 @@ body {
   font-family: 'Montserrat',Arial, Helvetica, sans-serif;
   line-height: 1.5; }
   body#bg-img {
-    background: url(../img/bg.webp);
+    background: url(../img/bg1.webp);
     background-attachment: fixed;
     background-size: cover; }
   body::after {
