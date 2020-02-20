@@ -105,12 +105,12 @@ body {
     background: url("../img/bg1.webp");
     background-attachment: fixed;
     background-size: cover; }
-  body::before {
+  body::after {
     content: '';
     display: block;
     position: absolute;
     background: url("../img/bg1.webp") no-repeat -10000px -1000px; }
-  body::after {
+  body::before {
     content: '';
     position: absolute;
     top: 0;
