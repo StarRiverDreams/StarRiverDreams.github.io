@@ -5,11 +5,6 @@ const menu = document.querySelector('.menu')
 const menuNav = document.querySelector('.menu-nav')
 const menuBranding = document.querySelector('.menu-branding')
 const navItems = document.querySelectorAll('.nav-item')
-const settingBtn = document.querySelector('.settings')
-console.log('settingBtn', settingBtn)
-const settingModal = document.querySelector('.settings-modal')
-const closeBtn = document.querySelector('.modal-close')
-console.log('closeBtn', closeBtn)
 
 let showMenu = false;
 
@@ -35,13 +30,6 @@ function toggleMenu() {
   }
 }
 
-function openSettingModal() {
-  settingModal.classList.add('show-modal')
-}
-
-function closeSettingModal() {
-  settingModal.classList.remove('show-modal')
-}
 
 menuBtn.addEventListener('click', toggleMenu)
 //settingBtn.addEventListener('click', openSettingModal)
