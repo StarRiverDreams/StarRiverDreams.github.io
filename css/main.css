@@ -102,11 +102,6 @@ body {
   margin: 0;
   font-family: 'Montserrat',Arial, Helvetica, sans-serif;
   line-height: 1.5; }
-  body::after {
-    content: '';
-    display: block;
-    position: absolute;
-    background: url("../img/bg1.webp") no-repeat -10000px -1000px; }
   body::before {
     content: '';
     position: absolute;
@@ -116,16 +111,6 @@ body {
     height: 100%;
     z-index: -1;
     background: rgba(48, 57, 82, 0.6); }
-  body #bg-img1 {
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    background: url("../img/bg1.webp");
-    background-attachment: fixed;
-    background-size: cover;
-    z-index: -2; }
 
 h1,
 h2,
@@ -154,6 +139,17 @@ header {
 
 .text-secondary {
   color: #f5cd79; }
+
+#bg-img1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2; }
 
 main {
   padding: 4rem;
