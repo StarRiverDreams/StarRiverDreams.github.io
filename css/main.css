@@ -96,16 +96,20 @@
   box-sizing: border-box; }
 
 body {
-  background: #303952;
   color: #fff;
   height: 100%;
   margin: 0;
   font-family: 'Montserrat',Arial, Helvetica, sans-serif;
   line-height: 1.5; }
   body#bg-img {
-    background: url(../img/bg1.webp);
+    background: url("../img/bg1.webp");
     background-attachment: fixed;
     background-size: cover; }
+  body::before {
+    content: '';
+    display: block;
+    position: absolute;
+    background: url("../img/bg1.webp") no-repeat -10000px -1000px; }
   body::after {
     content: '';
     position: absolute;
