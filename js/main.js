@@ -31,46 +31,6 @@ function toggleMenu() {
   }
 }
 
-
-//home 标题打字机
-const titleEle = document.querySelector("#home-title")
-const title = JSON.parse(titleEle.getAttribute('data-text'))
-
-let index = 0;
-let charIndex = 0;
-let delta = 500;
-
-let start = null;
-let isDeleteing = false;
-
-function typeText(time){
-  window.requestAnimationFrame(typeText)
-  if(!start) start = time;
-  let progress = time - start;
-  if(progress>delta){
-    let text = title[index]
-    if(!isDeleteing){
-      titleEle.innerHTML = text.slice(0, ++charIndex)
-      delta = 500 - Math.random() * 400;
-    }else{
-      titleEle.innerHTML = text.slice(0, charIndex--)
-    }
-    start = time;
-    if(charIndex === text.length){
-      isDeleteing = true;
-      delta = 200;
-      start = time + 1200;
-    }
-    if(charIndex < 0){
-      isDeleteing = false;
-      start = time + 1200;
-      index = ++index % title.length
-    }
-  }
-}
-
-window.requestAnimationFrame(typeText)
-
 // 在事件池中监听点击事件 处理显示
 menuBtn.addEventListener('click', toggleMenu)
 // image.addEventListener('DOMContentLoaded', function (e) {
