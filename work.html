@@ -7,12 +7,9 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
     integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
-  <link rel="preload" href="./img/project1.jpg" as="image">
-  <link rel="preload" href="./img/project2.jpg" as="image">
-  <link rel="preload" href="./img/project4.jpg" as="image">
 
   <link rel="stylesheet" href="css/main.css">
-  <title>Work</title>
+  <title>作品(图片延迟加载)</title>
 </head>
 
 <body>
@@ -50,33 +47,92 @@
     <h2 class="sm-heading">
       查看我的作品
     </h2>
+    <h2 class="sm-heading lazy-title">
+      图片延迟加载示例，解决移动端图片显示卡顿问题
+    </h2>
     <div class="projects">
-      <div class="item">
-        <a href="#!">
-          <img src="./img/projects/project1.webp" style="width:300px;height:230px;" alt="Project">
-        </a>
+      <div class="item img-box">
+        <img trueImg="./img/projects/project1.webp" src="./img/empty.png" alt="Project">
         <a href="https://gallery.echartsjs.com/editor.html?c=xrJqwYvUnx" class="btn-light">
           <i class="fas fa-eye"></i> 图表demo
         </a>
       </div>
-      <div class="item">
-        <a href="#!">
-          <img src="./img/projects/project2.webp" style="width:300px;height:230px;" alt="Project">
-        </a>
+      <div class="item img-box">
+        <img trueImg="./img/projects/project2.webp" src="./img/empty.png" alt="Project">
         <a href="https://masternodes.one" class="btn-light">
           <i class="fas fa-eye"></i> 项目地址
         </a>
       </div>
-      <div class="item">
-        <a href="#!">
-          <img src="./img/projects/project4.webp" style="width:300px;height:230px;" alt="Project">
-        </a>
+      <div class="item img-box">
+        <img trueImg="./img/projects/project4.webp" src="./img/empty.png" alt="Project">
+        <!-- <a href="#" class="btn-light">
+          <i class="fas fa-eye"></i> 项目地址
+        </a> -->
       </div>
     </div>
   </main>
   <footer id="main-footer">
     Copyright &copy; 2020
   </footer>
+  <script>
+    function offset(curEle) {
+        let par = curEle.offsetParent,
+            l = curEle.offsetLeft,
+            t = curEle.offsetTop;
+        while (par && par.tagName !== 'BODY') {
+            if (!/MSIE 8\.0/.test(navigator.userAgent)) {
+                l += par.clientLeft;
+                t += par.clientTop
+            }
+            l += par.offsetLeft;
+            t += par.offsetTop;
+            par = par.offsetParent;
+        }
+        return {
+            left: l,
+            top: t
+        }
+    }
+    let imgBoxes = document.querySelectorAll('.img-box');
+    let imgArr = []
+    for(let i = 0; i < imgBoxes.length; i++){
+      imgArr.push(imgBoxes[i].firstElementChild)
+    }
+
+    //延迟加载
+    function lazyImg(curImg) {
+        console.log('ok')
+        let oImg = new Image();
+        oImg.src = curImg.getAttribute("trueImg");
+        oImg.onload = function () {
+            curImg.src = this.src;
+            curImg.style.display = "block";
+            oImg = null;
+        };
+        curImg.isLoad = true;
+    }
+
+    //批量监听方法
+    function handleAllImgs() {
+      for(let i = 0; i< imgArr.length; i++){
+        let curImg = imgArr[i]
+        if (curImg.isLoad) {
+            continue;
+        }
+        //计算偏移量
+        let htmlDom = document.documentElement,
+            curImgPar = curImg.parentNode;
+        //let A = offset(curImgPar).top + curImgPar.offsetHeight,
+        let A = offset(curImgPar).top, 
+            B = htmlDom.clientHeight + htmlDom.scrollTop;
+        //到达图片底部开始加载
+        if (A <= B) {
+            lazyImg(curImg);
+        }
+      }
+    }
+    window.onscroll = handleAllImgs
+  </script>
   <script src="js/main.js"></script>
 </body>
 

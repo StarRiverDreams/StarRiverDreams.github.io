@@ -1,10 +1,12 @@
 //select dom
 const menuBtn = document.querySelector('.menu-btn')
-console.log('menuBtn', menuBtn)
+console.log('menuBtn1', menuBtn)
+
 const menu = document.querySelector('.menu')
 const menuNav = document.querySelector('.menu-nav')
 const menuBranding = document.querySelector('.menu-branding')
 const navItems = document.querySelectorAll('.nav-item')
+
 
 let showMenu = false;
 
@@ -32,5 +34,8 @@ function toggleMenu() {
 
 
 menuBtn.addEventListener('click', toggleMenu)
+// image.addEventListener('DOMContentLoaded', function (e) {
+//   console.log('load')
+// })
 //settingBtn.addEventListener('click', openSettingModal)
 //closeBtn.addEventListener('click', closeSettingModal)
